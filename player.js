@@ -37,18 +37,7 @@ function directoryToArray(arr) {
  * Includes all methods for playing, skipping, updating the display, etc.
  * @param {Array} playlist Array of objects with playlist song details ({title, file, howl}).
  */
-var Player = function() {
-  var playlist;
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      myArr = JSON.parse(this.responseText);
-      playlist = directoryToArray(myArr);
-    }
-  };
-  xmlhttp.open("GET", jsonUrl, true);
-  xmlhttp.send();
-
-
+var Player = function(playlist) {
   this.playlist = playlist;
   this.index = 0;
 
@@ -300,6 +289,18 @@ Player.prototype = {
 
 // Setup our new audio player class and pass it the playlist.
 var player = new Player();
+
+function testos() {
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myArr = JSON.parse(this.responseText);
+      playlist = directoryToArray(myArr);
+      player = new Player(playlist);
+    }
+  };
+  xmlhttp.open("GET", jsonUrl, true);
+  xmlhttp.send();
+}
 
 // Bind our player controls.
 playBtn.addEventListener('click', function() {
