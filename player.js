@@ -16,7 +16,7 @@ elms.forEach(function (elm) {
 
 var xmlhttp = new XMLHttpRequest();
 var jsonUrl = "";
-var reserve = true;
+var reverse = true;
 
 function directoryToArray(arr) {
   let newFiles = [];
@@ -26,7 +26,7 @@ function directoryToArray(arr) {
       newFiles.push({ title: arr[i].name, file: jsonUrl + arr[i].name, howl: null });
     }
   }
-  if(reserve) {
+  if(reverse) {
     return newFiles.reverse();
   } else {
     return newFiles;
