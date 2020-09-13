@@ -15,7 +15,8 @@ elms.forEach(function (elm) {
 });
 
 var xmlhttp = new XMLHttpRequest();
-var jsonUrl = "https://radio.carlflix.com/aufnahmen/json/";
+var jsonUrl = "";
+var reserve = true;
 
 function directoryToArray(arr) {
   let newFiles = [];
@@ -25,7 +26,11 @@ function directoryToArray(arr) {
       newFiles.push({ title: arr[i].name, file: jsonUrl + arr[i].name, howl: null });
     }
   }
-  return newFiles;
+  if(reserve) {
+    return newFiles.reverse();
+  } else {
+    return newFiles;
+  }
 }
 
 /**
@@ -339,15 +344,13 @@ function testos() {
         window.sliderDown = false;
       });
 
-      
-
       volume.addEventListener('mousemove', move);
       volume.addEventListener('touchmove', move);
 
       // Setup the "waveform" animation.
       wave.start();
       resize();
-      
+
     }
   };
   xmlhttp.open("GET", jsonUrl, true);
@@ -355,7 +358,7 @@ function testos() {
 }
 
 
-var move = function (event){};
+var move = function (event) { };
 
 var wave = new SiriWave({
   container: waveform,
