@@ -37,7 +37,7 @@ I wanted something super simple to share audio files. Better then normal directo
 
 ## Known bugs
 
-* Current track time and progress bar sometimes don't work after seek. It's a problem with the upstream framework.
+* Seeking back and forth on large files sometimes lead to weird behavior.
 
 ## Screenshots
 
